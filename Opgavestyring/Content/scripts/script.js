@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+    $.notify.defaults({ className: "info" });
 
     //Create Category
     $('#btnCreateCategory').on("click", function () {
@@ -10,6 +11,7 @@
         }).done(function (data) {
             GetCategory();
             $('#createCategory').modal('toggle');
+            $.notify("Du har oprettet en kategori");
         });
     });
 
@@ -20,6 +22,8 @@
             url: "api/task",
             method: "POST",
             data: data,
+        }).done(function (data) {
+            $.notify("Du har oprettet en opgave");
         })
     });
 
